@@ -1,7 +1,7 @@
 const knex = require('knex')
 const dotenv = require ('dotenv')
 const https = require ('https');
-const username = null || 'Amadou00'
+// const username = null || 'Amadou00'
 
 function RequestUsername(username){
     const options = {
@@ -21,7 +21,6 @@ function RequestUsername(username){
             console.log("Body: ", body);
             });
         });
-        
         request.end();
 }
 
@@ -43,4 +42,7 @@ function ServerKnex(){
       });
 }
 
-module.exports = {Request,ServerKnex}
+module.exports = {
+    RequestUsername,
+    ServerKnex
+}

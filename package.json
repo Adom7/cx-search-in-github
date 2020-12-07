@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "nodemon src/serverExpress",
     "start": "node src/serverExpress",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "seed": "node src/seed"
+
   },
   "keywords": [
     "efrei",
