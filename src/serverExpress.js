@@ -1,5 +1,11 @@
 const express= require ('express')
+const dotenv = require('dotenv')
+const database = require('./seed')
 
+database()
+dotenv.config()
+
+const ServerPort = process.env.SERVER_PORT ||   4242
 const app = express()
 
 app.get('/', (req,res) =>{
@@ -8,6 +14,6 @@ app.get('/', (req,res) =>{
     })
 })
 
-app.listen(4242, ()=>{
-    console.log('Server is listening on port 4242 ')
+app.listen(ServerPort, ()=>{
+    console.log(`Server is listening on port ${ServerPort} `)
 })
