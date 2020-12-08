@@ -13,5 +13,5 @@ function RequestUsername(username){
 }
 
 module.exports ={
-    RequestUsername
+    RequestUsername,
 }

@@ -3,7 +3,7 @@ const dotenv = require('dotenv')
 const seed = require('./seed');
 const gitApi = require('./GitApiPart');
 const https = require ('https');
-
+const tableFile = require('./createTable');
 
 // import RequestUsername from './seed'
 
@@ -24,9 +24,10 @@ app.get('/', (req,res) =>{
 app.get('/user/:username' , (req,res) => {
     const username = req.params.username
     seed.RequestSeed(username)
-    res.send('Vos données on était huejzoqplfq')
+    tableFile.createTable()
+    res.send(tableFile.infosUser)
 })
 
 app.listen(ServerPort, ()=>{
     console.log(`Server is listening on port ${ServerPort} `)
-})
+}) 
