@@ -2,6 +2,10 @@ const knex = require('knex')
 const dotenv = require ('dotenv')
 const gitApi = require ('./GitApiPart')
 const https = require ('https')
+const fs = require ('fs')
+const path = require ('path')
+const infosPath = path.join(process.cwd(),'data','infos.json')
+
 
 
 dotenv.config()
@@ -25,23 +29,24 @@ const options = gitApi.RequestUsername(username)
     let request = https.request(options, function(response){
         response.on("data", function(chunk){
             infos += chunk.toString('utf8');
+            
         });
         
         response.on("end", function(){
-          //Créer une table et injecter le json ici
-          //TODO Knex, création d'une et de champs si non existant
-          const attribute =[]
-          infos.forEach(element => {
-              Object.keys(element).forEach(()=>{
-                  const index = attribute.findIndex(attr => attr === key)
+    //NOTE Création d'un fichier 'infos.txt' pour parse le fichier.
+        fs.writeFileSync('./data/infos.json', infos,(err) => {
+            if (err) throw err;
+            console.log('The file has been saved!');
+        });        
+        const data = fs.readFileSync(infosPath, "utf-8")
+        const infosUser = JSON.parse(data)
 
-                  if (index === -1) {
-                      attribute.push(key)
-                  }
-              })
-          });
-          pg.schema.dropTableIfExists(database).then(()=>{
-              pg.schema.createTable(database, (table)=>{
+
+        
+
+        
+          pg.schema.dropTableIfExists(name).then(()=>{
+              pg.schema.createTable(name, (table)=>{
                   table.increments()
                   attribute.forEach(fieldName =>{
                     table.string(fieldName , 500).nullable()
