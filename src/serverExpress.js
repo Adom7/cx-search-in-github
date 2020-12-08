@@ -1,8 +1,9 @@
 const express= require ('express')
 const dotenv = require('dotenv')
-const database = require('./psqlPart');
+const seed = require('./seed');
 const gitApi = require('./GitApiPart');
 const https = require ('https');
+
 
 // import RequestUsername from './seed'
 
@@ -22,25 +23,8 @@ app.get('/', (req,res) =>{
 
 app.get('/user/:username' , (req,res) => {
     const username = req.params.username
-    //res.send('OK')
-    const options = gitApi.RequestUsername(username)
-    //Test affichage du json
-    let infos = ''
-
-    let request = https.request(options, function(response){
-        response.on("data", function(chunk){
-            infos += chunk.toString('utf8');
-        });
-        
-        response.on("end", function(){
-            console.log("Infos: ", infos);
-            res.send(infos)
-        });
-    });
-
-    request.end();
-    //res.send(database.body)
-// console.log(req.params.username)
+    seed.RequestSeed(username)
+    res.send('Vos données on était huejzoqplfq')
 })
 
 app.listen(ServerPort, ()=>{
