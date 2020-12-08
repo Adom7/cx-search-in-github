@@ -40,20 +40,20 @@ const options = gitApi.RequestUsername(username)
         });        
         const data = fs.readFileSync(infosPath, "utf-8")
         const infosUser = JSON.parse(data)
-
-
+        titles = Object.keys(infosUser)
+        console.log(titles);
         
 
-        
-          pg.schema.dropTableIfExists(name).then(()=>{
-              pg.schema.createTable(name, (table)=>{
-                  table.increments()
-                  attribute.forEach(fieldName =>{
-                    table.string(fieldName , 500).nullable()
-                  })
-              })
-          });
-          console.log("Infos: ", infos);
+
+        //   pg.schema.dropTableIfExists(name).then(()=>{
+        //       pg.schema.createTable(name, (table)=>{
+        //           table.increments()
+        //           attribute.forEach(fieldName =>{
+        //             table.string(fieldName , 500).nullable()
+        //           })
+        //       })
+        //   });
+        //   console.log("Infos: ", infos);
         });
         
     });
