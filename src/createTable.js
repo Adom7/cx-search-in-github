@@ -7,8 +7,8 @@ const sequelize = new Sequelize('searchgithub', '', '', {
 const fs = require ('fs')
 const path = require ('path')
 const infosPath = '/Users/adlaneould/Desktop/Efrei/Node/CodeFlix/onecode/search-in-github/data/infos.json'
-const data = fs.readFileSync(infosPath, "utf-8")
-const infosUser = JSON.parse(data)
+ const data = fs.readFileSync(infosPath, "utf-8")
+        const infosUser = JSON.parse(data)
 
 
 

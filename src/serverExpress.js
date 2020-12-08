@@ -24,8 +24,12 @@ app.get('/', (req,res) =>{
 app.get('/user/:username' , (req,res) => {
     const username = req.params.username
     seed.RequestSeed(username)
-    tableFile.createTable()
+    setTimeout(function(){
+        tableFile.createTable()
+    
+    }, 1000);
     res.send(tableFile.infosUser)
+    
 })
 
 app.listen(ServerPort, ()=>{

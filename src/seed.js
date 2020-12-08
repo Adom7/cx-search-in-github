@@ -16,7 +16,7 @@ const options = gitApi.RequestUsername(username)
     let request = https.request(options, function(response){
         response.on("data", function(chunk){
             infos += chunk.toString('utf8');
-            fs.writeFileSync('./data/infos.json', infos,(err) => {
+            fs.writeFile('./data/infos.json', infos,(err) => {
               if (err) throw err;
               console.log('The file has been saved!');
           });       
